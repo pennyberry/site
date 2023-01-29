@@ -13,8 +13,6 @@ Here are some powershell scripts. Some of them require that you install some mod
 - active directory module
 - vsphere powercli
 
-![][pic]
-
 ----
 
 [Terraform]: https://github.com/pennyberry/Public/tree/main/terraform
@@ -23,4 +21,3 @@ Here are some powershell scripts. Some of them require that you install some mod
 [pennyberry1@gmail.com]: pennyberry1@gmail.com
 [Instagram]: https://www.instagram.com/tallkidssuck/
 [Github]: https://github.com/pennyberry
-[pic]: ../../../000198470031.jpg

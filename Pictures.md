@@ -1,19 +1,12 @@
 ---
-title: PowerShell
+title: Pictures
 layout: default
-nav_order: 3
+nav_order: 4
 ---
-
-[Github Repo](https://github.com/pennyberry/Public/tree/main/powershell){: .btn }
-
-Here are some powershell scripts. Some of them require that you install some modules:
-
-- AzureCLI 
-- azure powershell module
-- active directory module
-- vsphere powercli
-
-![][pic]
+![][pic1]
+![][pic2]
+![][pic3]
+![][pic4]
 
 ----
 
@@ -23,4 +16,8 @@ Here are some powershell scripts. Some of them require that you install some mod
 [pennyberry1@gmail.com]: pennyberry1@gmail.com
 [Instagram]: https://www.instagram.com/tallkidssuck/
 [Github]: https://github.com/pennyberry
-[pic]: ../../../000198470031.jpg
+
+[pic1]: ../../../43860032.jpg
+[pic2]: ../../../000196760013.jpg
+[pic3]: ../../../IMG_20210301_115129.jpg
+[pic4]: ../../../523582010028.jpg

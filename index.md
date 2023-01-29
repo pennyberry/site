@@ -14,6 +14,8 @@ pennyberry1@gmail.com
 [Github](https://github.com/pennyberry){: .btn .btn-blue }
 [Instagram](https://www.instagram.com/tallkidssuck/){: .btn .btn-green }
 
+![][pic1]
+
 ----
 
 [Configuring Your Local Machine]: https://github.com/pennyberry/Public/tree/main/local_machine_config_scripts
@@ -21,3 +23,4 @@ pennyberry1@gmail.com
 [pennyberry1@gmail.com]: pennyberry1@gmail.com
 [Instagram]: https://www.instagram.com/tallkidssuck/
 [Github]: https://github.com/pennyberry
+[pic1]: ../../../000198470031.jpg

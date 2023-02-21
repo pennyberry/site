@@ -25,11 +25,6 @@ Stuff to bring
 - bring an air matress just in case
 
 
-![][pic5]
-![][pic2]
-![][pic3]
-![][pic4]
-
 ----
 
 [Terraform]: https://github.com/pennyberry/Public/tree/main/terraform

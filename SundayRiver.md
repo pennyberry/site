@@ -8,7 +8,8 @@ Here's some details over the trip to Sunday River:
 
 Location
 - 58 Jibe Rd, Newry, ME 04261
-- https://goo.gl/maps/ZPnwaYEmbe4Pi8w2A
+- [Directions]
+- first unit on the left, top of the hill
 
 Location on Mountain
 ![][pic5]
@@ -23,6 +24,7 @@ Availability
 Stuff to bring
 - bring some sheets, the house only has comferters and pillows
 - bring an air matress just in case
+- a towel and a bathing suit. there's a condo shared pool, hot tub, and sauna
 
 
 ----
@@ -33,6 +35,7 @@ Stuff to bring
 [pennyberry1@gmail.com]: pennyberry1@gmail.com
 [Instagram]: https://www.instagram.com/tallkidssuck/
 [Github]: https://github.com/pennyberry
+[Directions]: https://goo.gl/maps/ZPnwaYEmbe4Pi8w2A
 
 [pic1]: ../../../43860032.jpg
 [pic2]: ../../../000196760013.jpg

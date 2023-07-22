@@ -4,7 +4,7 @@ layout: default
 nav_order: 2
 ---
 
-[Github Repo](https://github.com/pennyberry/Public/tree/main/terraform){: .btn }
+[Terraform Repo](https://github.com/pennyberry/Public/tree/main/terraform){: .btn }
 
 You probably will want to install some pre-requisite programs before you get going here. I suggest starting with installing Windows Subsystem for Linux and running some of the installations here: [Configuring Your Local Machine]
 

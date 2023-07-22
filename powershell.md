@@ -1,10 +1,10 @@
 ---
 title: PowerShell
 layout: default
-nav_order: 3
+nav_order: 4
 ---
 
-[Github Repo](https://github.com/pennyberry/Public/tree/main/powershell){: .btn }
+[PowerShell Repo](https://github.com/pennyberry/Public/tree/main/powershell){: .btn }
 
 Here are some powershell scripts. Some of them require that you install some modules:
 

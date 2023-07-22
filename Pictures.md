@@ -8,7 +8,7 @@ nav_order: 5
 ![][pic3]
 ![][pic4]
 ![][pic5]
-![][pic6]
+
 ----
 
 [Terraform]: https://github.com/pennyberry/Public/tree/main/terraform
@@ -23,4 +23,3 @@ nav_order: 5
 [pic3]: ../../../IMG_20210301_115129.jpg
 [pic4]: ../../../523582010028.jpg
 [pic5]: ../../../PXL_20230303_101915947.MV.jpg
-[pic6]: ../../../giftest.gif

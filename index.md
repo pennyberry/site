@@ -13,6 +13,7 @@ pennyberry1@gmail.com
 
 [Github](https://github.com/pennyberry){: .btn .btn-blue }
 [Instagram](https://www.instagram.com/tallkidssuck/){: .btn .btn-green }
+[Lemmy](https://social.joeberry.org){: .btn .btn-red }
 
 ![][pic1]
 

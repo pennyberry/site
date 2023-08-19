@@ -7,7 +7,7 @@ nav_order: 6
 [Lemmy Repo](https://github.com/pennyberry/Public/tree/main/lemmy){: .btn }
 
 
-This is a full fledged social media platform. Please check out my own implementation of this at https://social.joeberry.org
+This is a full fledged social media platform. Please check out my own implementation of this at [https://social.joeberry.org](https://social.joeberry.org)
 
 ----
 

@@ -4,7 +4,7 @@ layout: home
 nav_order: 1
 ---
 
-Hello, my name is Joe Berry. I am a Sys/Devops professional during the weekday and a snowboarder on the weekend. Here are some scripts and stuff to help you develop.
+Hello, my name is Joe Berry. I am a Sys/Devops professional during the weekday and a snowboarder on the weekend. Here are some scripts and stuff to help you develop. This site is self-made and hosted on Github and maintained via Github Actions. Check that out here: [Site](https://github.com/pennyberry/site)
 
 Repos and scripts are free to use:
 

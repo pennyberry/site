@@ -18,8 +18,8 @@ Parking
 - parking at the house is limited to two cars. please park down at white cap or by foggy goggle and get someone to pick you up.
 
 Availability
-- the house is available to enter on Saturday 25th around 3-4PM
-- We have to leave by 10am on wednesday 1st. I will be leaving sometime tuesday to catch a flight to Tahoe
+- the house is available to enter on Friday the 31st around 3-4PM
+- We have to leave by 10am on Tuesday the 4th. I will be leaving sometime Monday.
 
 Stuff to bring
 - bring some sheets, the house only has comferters and pillows

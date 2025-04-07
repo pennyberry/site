@@ -8,3 +8,4 @@ gem "just-the-docs", "0.10.1" # currently the latest pre-release
 
 group :jekyll_plugins do
   gem "jekyll-timeago", "~> 0.13.1"
+end

@@ -1,7 +1,7 @@
 ---
 title: Hashicorp Vault
 layout: default
-nav_order: 8
+nav_order: 7
 ---
 
 [Vault Repo](https://github.com/pennyberry/Public/tree/main/hashicorp/vault){: .btn }

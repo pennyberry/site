@@ -7,7 +7,7 @@ nav_order: 7
 [Vault](https://github.com/pennyberry/Public/tree/main/kubectl/hashicorp-vault){: .btn }
 
 
-Signing into Vault using Keycloak:
+Signing into Vault using Keycloak(I updated the application to a new identity provider: Authentik - but still a cool showcase of OIDC nonetheless!):
 ![][pic7]
 
 ----

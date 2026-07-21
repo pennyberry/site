@@ -11,3 +11,5 @@ The links above showcase the multitude of applications you can run using kuberne
 To view live stats, head over to my Grafana Dashboards:
 
 Check out [Observability](https://joeberry.org/Observability.html) for a dashboard on the cluster.
+
+[Kubernetes Diagram]: ../../../k3s-cluster-architecture.html

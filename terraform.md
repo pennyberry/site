@@ -14,6 +14,10 @@ With the azure cli installed along with terraform, logon to azure, then you can 
 
 I like to create a shell script on my machine so it's easy to logon:
 
+My local proxmox cluster diagram
+[Diagram]
+
+
 ```
 az login --service-principal -u <ENTER-SPN-ID-HERE> -p <ENTERPASSWORD> --tenant <ENTER-TENANT-ID>
 export ARM_CLIENT_ID=<ENTER-SPN-ID-HERE>
@@ -30,3 +34,4 @@ export ARM_SUBSCRIPTION_ID=<ENTER-SUBSCRIPTION-ID>
 [pennyberry1@gmail.com]: pennyberry1@gmail.com
 [Instagram]: https://www.instagram.com/tallkidssuck/
 [Github]: https://github.com/pennyberry
+[Diagram]: ../../../terraform-architecture.html

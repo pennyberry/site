@@ -4,7 +4,7 @@ layout: default
 nav_order: 7
 ---
 
-[Vault Repo](https://github.com/pennyberry/Public/tree/main/hashicorp/vault){: .btn }
+[Vault](https://github.com/pennyberry/Public/tree/main/kubectl/hashicorp-vault){: .btn }
 
 
 Signing into Vault using Keycloak:

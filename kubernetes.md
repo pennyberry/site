@@ -12,4 +12,8 @@ To view live stats, head over to my Grafana Dashboards:
 
 Check out [Observability](https://joeberry.org/Observability.html) for a dashboard on the cluster.
 
+[Kubernetes Diagram]{: .btn }
+
+---
+
 [Kubernetes Diagram]: ../../../k3s-cluster-architecture.html

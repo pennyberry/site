@@ -4,17 +4,12 @@ layout: default
 nav_order: 3
 ---
 
-[Kubectl Repo](https://github.com/pennyberry/Public/tree/main/kubectl){: .btn }
-[Helm Repo](https://github.com/pennyberry/Public/tree/main/helm){: .btn }
+[Kubectl](https://github.com/pennyberry/Public/tree/main/kubectl){: .btn }
+[Helm](https://github.com/pennyberry/Public/tree/main/helm){: .btn }
 
-This dives into the world of applying application configurations onto the AKS Clusters we build on [Terraform AKS Clusters]. Make sure you have helm and AZ modules installed for these tasks. Kubernetes clusters are extremely complex but very efficient and versatile. Think like you are building an entire ecosystem inside it, you will want layers for things like NGINX, Certificate Management, App Configuration, Monitoring, etc..
+The links above showcase the multitude of applications you can run using kubernetes. I host a 3-VM k3s cluster via my 3-node proxmox cluster at home. This architecture allows for high-availability and fault tollerance across NICs, Disks, RAM, CPU, etc..
+To view live stats, head over to my Grafana Dashboards:
 
-----
+[Grafana Dashboard - Pods](https://grafana.joeberry.org/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&from=now-1h&to=now&timezone=UTC&var-datasource=edvca7b2zijuod&var-cluster=&var-namespace=default&refresh=10s)
 
-[Terraform]: https://github.com/pennyberry/Public/tree/main/terraform
-[Terraform AKS Clusters]: https://github.com/pennyberry/Public/tree/main/terraform/aks_cluster
-[Configuring Your Local Machine]: https://github.com/pennyberry/Public/tree/main/local_machine_config_scripts
-[Azure CLI Scripts]: https://github.com/pennyberry/Public/tree/main/azure_cli
-[pennyberry1@gmail.com]: pennyberry1@gmail.com
-[Instagram]: https://www.instagram.com/tallkidssuck/
-[Github]: https://github.com/pennyberry
+[Grafana Dashboard - Networking](https://grafana.joeberry.org/d/8b7a8b326d7a6f1f04244066368c67af/kubernetes-networking-namespace-pods?orgId=1&from=now-1h&to=now&timezone=UTC&var-datasource=edvca7b2zijuod&var-cluster=&var-namespace=$__all&refresh=10s)

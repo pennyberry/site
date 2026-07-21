@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proxmox Terraform Infrastructure</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0e17;
+    color: #c9d1d9;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #8b949e;
+    font-size: 14px;
+    margin-bottom: 48px;
+  }
+  .diagram {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .env-block {
+    background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+    border: 1px solid #f9731633;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 0 60px #f9731610;
+  }
+  .env-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #f97316;
+  }
+  .env-desc {
+    font-size: 12px;
+    color: #6e7681;
+    margin-bottom: 28px;
+  }
+  .layer {
+    margin-bottom: 24px;
+  }
+  .layer-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+    color: #8b949e;
+  }
+  .node-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .node {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .node:hover {
+    border-color: #f97316;
+    box-shadow: 0 0 16px #f9731618;
+  }
+  .node-icon { font-size: 22px; margin-bottom: 8px; }
+  .node-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f0f6fc;
+    margin-bottom: 5px;
+  }
+  .node-detail {
+    font-size: 11px;
+    color: #8b949e;
+    line-height: 1.6;
+  }
+  .node-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .tag-vm { background: #f9731622; color: #f97316; }
+  .tag-container { background: #3fb95022; color: #3fb950; }
+  .tag-module { background: #bc8cff22; color: #bc8cff; }
+  .tag-network { background: #d2992222; color: #d29922; }
+  .tag-firewall { background: #f8514922; color: #f85149; }
+  .tag-k3s { background: #58a6ff22; color: #58a6ff; }
+  .tag-deprecated { background: #484f5822; color: #484f58; }
+  .deprecated {
+    opacity: 0.45;
+    border: 1px dashed #30363d;
+  }
+  .deprecated .node-name {
+    text-decoration: line-through;
+    color: #6e7681;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px dashed #21262d;
+    margin: 8px 0;
+  }
+  .legend {
+    max-width: 1200px;
+    margin: 28px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #8b949e;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+  .infra-summary {
+    max-width: 1200px;
+    margin: 28px auto 0;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 20px 28px;
+  }
+  .infra-summary h3 {
+    font-size: 14px;
+    color: #c9d1d9;
+    margin-bottom: 12px;
+  }
+  .infra-summary ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 6px;
+  }
+  .infra-summary li {
+    font-size: 12px;
+    color: #8b949e;
+    padding-left: 16px;
+    position: relative;
+  }
+  .infra-summary li::before {
+    content: "->";
+    position: absolute;
+    left: 0;
+    color: #484f58;
+  }
+  .flow-arrow {
+    text-align: center;
+    color: #f9731666;
+    font-size: 16px;
+    padding: 4px 0;
+    letter-spacing: 4px;
+  }
+</style>
+</head>
+<body>
+<h1>Proxmox Terraform Infrastructure</h1>
+<p class="subtitle">pennyberry/Public/terraform/proxmox | Nodes: kiwi, pve2, pve3 | Datastores: nvme, iso-storage</p>
+
+<div class="diagram">
+  <div class="env-block">
+
+    <!-- NETWORK -->
+    <div class="layer">
+      <div class="layer-title">Network Layer</div>
+      <div class="node-grid">
+        <div class="node">
+          <div class="node-icon">🌐</div>
+          <div class="node-name">vmbr0</div>
+          <div class="node-detail">Primary network bridge — all VMs and containers attach here</div>
+          <span class="node-tag tag-network">Bridge</span>
+        </div>
+        <div class="node">
+          <div class="node-icon">🌐</div>
+          <div class="node-name">vmbr1</div>
+          <div class="node-detail">Secondary bridge — firewall uplink / external</div>
+          <span class="node-tag tag-network">Bridge</span>
+        </div>
+        <div class="node">
+          <div class="node-icon">🔥</div>
+          <div class="node-name">OPNsense2 Firewall</div>
+          <div class="node-detail">
+            6 CPU · 8 GB RAM · 32 GB NVMe<br>
+            Dual NIC: vmbr0 + vmbr1<br>
+            Node: kiwi · VM ID: 109
+          </div>
+          <span class="node-tag tag-firewall">Firewall</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">▼ ▼ ▼</div>
+
+    <!-- K3S CLUSTER -->
+    <div class="layer">
+      <div class="layer-title">K3S Kubernetes Cluster</div>
+      <div class="node-grid">
+        <div class="node">
+          <div class="node-icon">☸️</div>
+          <div class="node-name">k3s-server</div>
+          <div class="node-detail">
+            2 CPU · 4 GB RAM · 25 GB disk<br>
+            Ubuntu Noble · cloud-init<br>
+            MetalLB LB · NFS persistent storage<br>
+            NGINX Proxy Manager
+          </div>
+          <span class="node-tag tag-k3s">Server</span>
+        </div>
+        <div class="node">
+          <div class="node-icon">☸️</div>
+          <div class="node-name">k3s-agent-0</div>
+          <div class="node-detail">
+            2 CPU · 4 GB RAM · 25 GB disk<br>
+            Joins server via shared token<br>
+            Ubuntu Noble · cloud-init
+          </div>
+          <span class="node-tag tag-k3s">Agent</span>
+        </div>
+        <div class="node">
+          <div class="node-icon">☸️</div>
+          <div class="node-name">k3s-agent-1</div>
+          <div class="node-detail">
+            2 CPU · 4 GB RAM · 25 GB disk<br>
+            Joins server via shared token<br>
+            Ubuntu Noble · cloud-init
+          </div>
+          <span class="node-tag tag-k3s">Agent</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">▼ ▼ ▼</div>
+
+    <!-- WORKLOAD VMs -->
+    <div class="layer">
+      <div class="layer-title">Workload VMs</div>
+      <div class="node-grid">
+        <div class="node">
+          <div class="node-icon">🤖</div>
+          <div class="node-name">Hermes</div>
+          <div class="node-detail">
+            AI agent host<br>
+            Ubuntu Noble · cloud-init
+          </div>
+          <span class="node-tag tag-vm">VM</span>
+        </div>
+        <div class="node">
+          <div class="node-icon">🎵</div>
+          <div class="node-name">Jellyfin</div>
+          <div class="node-detail">
+            Media streaming server<br>
+            Ubuntu Noble · cloud-init
+          </div>
+          <span class="node-tag tag-vm">VM</span>
+        </div>
+        <div class="node deprecated">
+          <div class="node-icon">🎮</div>
+          <div class="node-name">Hytale</div>
+          <div class="node-detail">
+            Game server — DEPRECATED<br>
+            Ubuntu Noble · cloud-init
+          </div>
+          <span class="node-tag tag-deprecated">Deprecated</span>
+        </div>
+        <div class="node deprecated">
+          <div class="node-icon">🔗</div>
+          <div class="node-name">CORS-Proxy</div>
+          <div class="node-detail">
+            2 CPU · 2 GB RAM · 32 GB NVMe<br>
+            Node: kiwi · VM ID: 106 — DEPRECATED
+          </div>
+          <span class="node-tag tag-deprecated">Deprecated</span>
+        </div>
+        <div class="node deprecated">
+          <div class="node-icon">🐧</div>
+          <div class="node-name">Ubuntu-Server-1</div>
+          <div class="node-detail">
+            General-purpose Ubuntu VM — DEPRECATED<br>
+            Ubuntu Noble · cloud-init
+          </div>
+          <span class="node-tag tag-deprecated">Deprecated</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">▼ ▼ ▼</div>
+
+    <!-- SHARED MODULES -->
+    <div class="layer">
+      <div class="layer-title">Shared Terraform Modules</div>
+      <div class="node-grid">
+        <div class="node">
+          <div class="node-icon">📐</div>
+          <div class="node-name">vm_ubuntu</div>
+          <div class="node-detail">
+            Reusable Ubuntu Noble VM module<br>
+            Cloud-init provisioning · SSH key auth<br>
+            qemu-guest-agent · DHCP · user-data<br>
+            CPU type: x86-64-v2-AES · Nodes: kiwi, pve2, pve3
+          </div>
+          <span class="node-tag tag-module">Module</span>
+        </div>
+        <div class="node">
+          <div class="node-icon">💾</div>
+          <div class="node-name">images</div>
+          <div class="node-detail">
+            Cloud image management<br>
+            Ubuntu Noble qcow2 download per node
+          </div>
+          <span class="node-tag tag-module">Module</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div> VM</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#bc8cff"></div> Module</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#d29922"></div> Network</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f85149"></div> Firewall</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#58a6ff"></div> K3S</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#484f58"></div> Deprecated</div>
+</div>
+
+<!-- Summary -->
+<div class="infra-summary">
+  <h3>Infrastructure Summary</h3>
+  <ul>
+    <li>Proxmox cluster with 3 nodes: kiwi, pve2, pve3</li>
+    <li>Datastores: nvme (VM disks), iso-storage (cloud images)</li>
+    <li>OPNsense2 firewall (VM 109) with dual NIC for network segmentation</li>
+    <li>K3S cluster: 1 server + 2 agent nodes, MetalLB LB, NFS persistent storage, NGINX Proxy Manager</li>
+    <li>Active workload VMs: Hermes (AI agent), Jellyfin (media streaming)</li>
+    <li>Deprecated: Hytale (game server), CORS-Proxy (VM 106), Ubuntu-Server-1</li>
+    <li>Shared vm_ubuntu module: Ubuntu Noble cloud-init, SSH key auth, qemu-guest-agent, x86-64-v2-AES CPU</li>
+    <li>All VMs provisioned via bpg/proxmox provider with environment-variable credentials</li>
+  </ul>
+</div>
+
+</body>
+</html>
